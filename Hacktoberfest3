@@ -1,0 +1,20 @@
+C# image size gets down when i rotate it
+In c# i have a navigator placed on a xz plane what seems like this navigator
+
+I found a method that provides oppurtunity of rotating any image by degrees what i exactly want to have but it also resizes image and after rotating for few times image scales that much even becomes invisible. Here is the code , how should i edit it ?
+
+private Bitmap RotateImage(Bitmap bmp, float angle)
+    {
+        float height = bmp.Height;
+        float width = bmp.Width;
+        int hypotenuse = System.Convert.ToInt32(System.Math.Floor(Math.Sqrt(height * height + width * width)));
+        Bitmap rotatedImage = new Bitmap(hypotenuse, hypotenuse);
+        using (Graphics g = Graphics.FromImage(rotatedImage))
+        {
+            g.TranslateTransform((float)rotatedImage.Width / 2, (float)rotatedImage.Height / 2); //set the rotation point as the center into the matrix
+            g.RotateTransform(angle); //rotate
+            g.TranslateTransform(-(float)rotatedImage.Width / 2, -(float)rotatedImage.Height / 2); //restore rotation point into the matrix
+            g.DrawImage(bmp, (hypotenuse - width) / 2, (hypotenuse - height) / 2, width, height);
+        }
+        return rotatedImage;
+    }
