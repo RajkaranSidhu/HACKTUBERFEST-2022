@@ -1,0 +1,16 @@
+Having very low understandnig of the Prototypes's use
+The Object.create() method creates a new object, using an existing object as the prototype of the newly created object.
+
+what does it means by “prototype of the newly created object” .
+
+and what are the cases this is usefull?
+
+SOURCE=> MDN JS DOCS
+
+const obj= {a:1,b:2}
+const obj2= {name:'Qaisar',}
+const temp= Object.create(obj)
+temp.name='Qaisar'
+obj.a=9
+console.log(temp,'temp', obj,'OBJECT')
+MDN Docs says Object.create gives a shallow copy but nothing gets copied here
