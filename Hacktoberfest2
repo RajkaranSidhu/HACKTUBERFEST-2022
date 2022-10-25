@@ -1,0 +1,11 @@
+timeit on a python file that launches pytest
+I would like to timeit a python file, but I can't make it work: the python file looks like it (it launches tests)
+
+import pytest
+import sys
+
+retcode: int | pytest.ExitCode = pytest.main(["--mypy", "--ignore=viewers"])
+
+if retcode == pytest.ExitCode.OK:
+    print(f"\n---\nYou are using Python {sys.version} btw\n---\n")
+I've tried python -m timeit unit_tests.py with quotes around the unit_tests.py and without extension, and all sort of combinaisons but nothing works
